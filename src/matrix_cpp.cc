@@ -169,6 +169,15 @@ Matrix_cpp Matrix_cpp::Transpose() {
 
 Matrix_cpp Matrix_cpp::CalcComplements() {
   Matrix_cpp res;
+  res.create_matr(rows_, cols_);
+  for (int i = 0; i < cols_; i++) {
+    for (int j = 0; j < rows_; j++) {
+      Matrix_cpp tmp = component(i, j);
+      double det = tmp.Determinant();
+      int dop = ((i + j) % 2 == 0) ? 1 : -1;
+      res.matrix[i][j] = dop * det;
+    }
+  }
   return res;
 }
 
@@ -180,25 +189,34 @@ double Matrix_cpp::Determinant() {
     if (cols_ == 2) {
       return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
     }
-
-    Matrix_cpp M;
-    M.create_matr(rows_ - 1, cols_ - 1);
     for (int i = 0; i < rows_; i++) {
-      for (int j = 1; j < cols_; j++) {
-        int sign = 0;
-        for (int k = 0; k < rows_; k++) {
-          if (k == i) {
-            sign = -1;
-            continue;
-          }
-          M.matrix[j - 1][k + sign] = matrix[j][k];
-        }
-      }
+      Matrix_cpp M = component(0, i);
       int dop = (i % 2 == 0) ? 1 : -1;
       res += matrix[0][i] * dop * M.Determinant();
     }
   } else {
     return 0;
+  }
+  return res;
+}
+
+Matrix_cpp Matrix_cpp::component(int i_c, int j_c) {
+  Matrix_cpp res;
+  res.create_matr(rows_ - 1, cols_ - 1);
+  int sign_cols = 0;
+  for (int j = 0; j < cols_; j++) {
+    int sign_rows = 0;
+    if (j == i_c) {
+      sign_cols = -1;
+      continue;
+    }
+    for (int k = 0; k < rows_; k++) {
+      if (k == j_c) {
+        sign_rows = -1;
+        continue;
+      }
+      res.matrix[j + sign_cols][k + sign_rows] = matrix[j][k];
+    }
   }
   return res;
 }

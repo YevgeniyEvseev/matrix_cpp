@@ -18,5 +18,7 @@ int main() {
   std::cout << A5.Determinant() << std::endl;
   double arr5[16] = {3, -3, -5, 8, -3, 2, 4, -6, 2, -5, -7, 5, -4, 3, 5, -6};
   Matrix_cpp A6(arr5, 16, 4, 4);
+  std::cout << A6 << std::endl;
   std::cout << A6.Determinant() << std::endl;
+  std::cout << A6.CalcComplements() << std::endl;
 }

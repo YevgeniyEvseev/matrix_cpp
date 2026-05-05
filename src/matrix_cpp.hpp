@@ -32,6 +32,7 @@ class Matrix_cpp {
   Matrix_cpp Transpose();
   Matrix_cpp CalcComplements();
   double Determinant();
+  Matrix_cpp component(int i, int j);
 
   friend std::ostream& operator<<(std::ostream& os, const Matrix_cpp& m);
   friend std::istream& operator>>(std::istream& is, Matrix_cpp& m);
