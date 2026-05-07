@@ -133,6 +133,8 @@ void Matrix_cpp::MulNumber(const double num) {
 }
 
 void Matrix_cpp::MulMatrix(const Matrix_cpp& other) {
+  if (other.cols_ != rows_ || other.rows_ != cols_)
+    std::logic_error(" rows_ or cols_ for op2 and this matrix is not equel");
   Matrix_cpp rotate_other;
   Matrix_cpp tmp;
   rotate_other.create_matr(other.cols_, other.rows_);
@@ -153,6 +155,16 @@ void Matrix_cpp::MulMatrix(const Matrix_cpp& other) {
 
 Matrix_cpp& Matrix_cpp::operator+=(const Matrix_cpp& other) {
   SumMatrix(other);
+  return *this;
+}
+
+Matrix_cpp& Matrix_cpp::operator-=(const Matrix_cpp& other) {
+  SubMatrix(other);
+  return *this;
+}
+
+Matrix_cpp& Matrix_cpp::operator*=(const Matrix_cpp& other) {
+  MulMatrix(other);
   return *this;
 }
 
@@ -219,4 +231,44 @@ Matrix_cpp Matrix_cpp::component(int i_c, int j_c) {
     }
   }
   return res;
+}
+
+Matrix_cpp Matrix_cpp::InverseMatrix() {
+  Matrix_cpp res = CalcComplements();
+  double det = Determinant();
+  res.MulNumber(1 / det);
+  res = res.Transpose();
+  return res;
+}
+
+Matrix_cpp Matrix_cpp::operator+(const Matrix_cpp& op2) const {
+  Matrix_cpp res = *this;
+  res.SumMatrix(op2);
+  return res;
+}
+
+Matrix_cpp Matrix_cpp::operator-(const Matrix_cpp& op2) const {
+  Matrix_cpp res = *this;
+  res.SubMatrix(op2);
+  return res;
+}
+
+Matrix_cpp Matrix_cpp::operator*(const Matrix_cpp& op2) const {
+  Matrix_cpp res = *this;
+  res.MulMatrix(op2);
+  return res;
+}
+
+bool Matrix_cpp::operator==(const Matrix_cpp& op2) {
+  if (op2.rows_ != rows_ || op2.cols_ != cols_) return false;
+  for (int i = 0; i < cols_; i++) {
+    for (int j = 0; j < rows_; j++) {
+      if (op2.matrix[i][j] = !matrix[i][j]) return false;
+    }
+  }
+  return true;
+}
+
+double Matrix_cpp::operator()(int i, int j) {
+  return matrix[i][j];
 }

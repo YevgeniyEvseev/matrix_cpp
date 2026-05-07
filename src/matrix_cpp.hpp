@@ -23,9 +23,19 @@ class Matrix_cpp {
   Matrix_cpp(Matrix_cpp&& m);
   Matrix_cpp& operator=(Matrix_cpp&& m);
   ~Matrix_cpp();
-  Matrix_cpp& operator+=(const Matrix_cpp& other);
 
-  void SumMatrix(const Matrix_cpp& other);
+  Matrix_cpp& operator+=(const Matrix_cpp& other);
+  Matrix_cpp& operator-=(const Matrix_cpp& other);
+  Matrix_cpp& operator*=(const Matrix_cpp& other);
+
+  Matrix_cpp operator+(const Matrix_cpp& op2) const;
+  Matrix_cpp operator-(const Matrix_cpp& op2) const;
+  Matrix_cpp operator*(const Matrix_cpp& op2) const;
+
+  double operator()(int i, int j);
+  bool operator==(const Matrix_cpp& op2);
+
+      void SumMatrix(const Matrix_cpp& other);
   void SubMatrix(const Matrix_cpp& other);
   void MulNumber(const double num);
   void MulMatrix(const Matrix_cpp& other);
@@ -33,6 +43,7 @@ class Matrix_cpp {
   Matrix_cpp CalcComplements();
   double Determinant();
   Matrix_cpp component(int i, int j);
+  Matrix_cpp InverseMatrix();
 
   friend std::ostream& operator<<(std::ostream& os, const Matrix_cpp& m);
   friend std::istream& operator>>(std::istream& is, Matrix_cpp& m);

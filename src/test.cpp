@@ -21,4 +21,11 @@ int main() {
   std::cout << A6 << std::endl;
   std::cout << A6.Determinant() << std::endl;
   std::cout << A6.CalcComplements() << std::endl;
+  double arr7[16] = {1, 2, -1, 0, 3, 1, 0, -4, -2};
+  Matrix_cpp inv(arr7, 9, 3, 3);
+
+  std::cout << inv << std::endl;
+  std::cout << inv.Transpose() << std::endl;
+  std::cout << inv.InverseMatrix() << std::endl;
+  std::cout << A1 + A2 << std::endl;
 }
