@@ -1,0 +1,6 @@
+/home/dotharer/Documents/learn/C_C++/matrix_cpp/build/CMakeFiles/g_test.dir
+/home/dotharer/Documents/learn/C_C++/matrix_cpp/build/CMakeFiles/edit_cache.dir
+/home/dotharer/Documents/learn/C_C++/matrix_cpp/build/CMakeFiles/rebuild_cache.dir
+/home/dotharer/Documents/learn/C_C++/matrix_cpp/build/src/CMakeFiles/matrix_l.dir
+/home/dotharer/Documents/learn/C_C++/matrix_cpp/build/src/CMakeFiles/edit_cache.dir
+/home/dotharer/Documents/learn/C_C++/matrix_cpp/build/src/CMakeFiles/rebuild_cache.dir

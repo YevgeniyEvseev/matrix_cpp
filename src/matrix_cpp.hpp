@@ -9,7 +9,7 @@ class Matrix_cpp {
   int cols_;
   double** matrix;
 
-  void set_value_mat(double* arr, int size_arr);
+  void set_value_mat(const double* arr, int size_arr);
   void create_matr(int row, int col);
   void erase_matr();
   void copy_matrix(const Matrix_cpp& m);
@@ -17,7 +17,7 @@ class Matrix_cpp {
 
  public:
   Matrix_cpp() : rows_(0), cols_(0), matrix(nullptr) {}
-  Matrix_cpp(double* m, int len, int r, int c);
+  Matrix_cpp(const double* m, int len, int r, int c);
   Matrix_cpp(const Matrix_cpp& m);
   Matrix_cpp& operator=(const Matrix_cpp& m);
   Matrix_cpp(Matrix_cpp&& m);

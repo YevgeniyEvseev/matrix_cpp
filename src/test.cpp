@@ -1,5 +1,25 @@
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+
 #include "matrix_cpp.hpp"
 
+const double arr1[9] = {1, 2, 1, 4, 2, 2, 0, 1, 7};
+const double arr2[9] = {7, 5, 1, 2, 1, 2, 4, 3, 4};
+const double arr3[9] = {6, 3, 0, 4, 1, -3, -2, -3, 2};
+
+TEST(matrix, determinant_1) {
+  Matrix_cpp A4(arr3, 9, 3, 3);
+  EXPECT_EQ(A4.Determinant(), -48);
+}
+
+int main(int argc, char** argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  // ::testing::InitGoogleMock(&argc, argv);
+
+  return RUN_ALL_TESTS();
+}
+
+#if 0
 int main() {
   double arr1[9] = {1, 2, 1, 4, 2, 2, 0, 1, 7};
   double arr2[9] = {7, 5, 1, 2, 1, 2, 4, 3, 4};
@@ -29,3 +49,4 @@ int main() {
   std::cout << inv.InverseMatrix() << std::endl;
   std::cout << A1 + A2 << std::endl;
 }
+#endif

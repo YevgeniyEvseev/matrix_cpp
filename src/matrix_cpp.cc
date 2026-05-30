@@ -8,7 +8,7 @@ void Matrix_cpp::copy_matrix(const Matrix_cpp& m) {
   }
 }
 
-void Matrix_cpp::set_value_mat(double* arr, int size_arr) {
+void Matrix_cpp::set_value_mat(const double* arr, int size_arr) {
   int size_matr = rows_ * cols_;
   if (size_matr > size_arr) {
     std::out_of_range("size array is less size of matrix");
@@ -39,7 +39,7 @@ void Matrix_cpp::erase_matr() {
 
 Matrix_cpp::~Matrix_cpp() { erase_matr(); }
 
-Matrix_cpp::Matrix_cpp(double* m, int len, int r, int c) {
+Matrix_cpp::Matrix_cpp(const double* m, int len, int r, int c) {
   create_matr(r, c);
   set_value_mat(m, len);
 }
