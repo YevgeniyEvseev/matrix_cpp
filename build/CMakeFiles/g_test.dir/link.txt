@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/g_test.dir/src/test.cpp.o -o g_test  src/libmatrix_l.a -lgtest -lgmock -lpthread 
